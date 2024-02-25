@@ -7,6 +7,10 @@ git config --global branch.sort -committterdate
 # enable merge conflict resolution memory
 git config --global rerere.enabled true
 
+# fix long `git status` issue
+git config --global core.untrackedcache true
+git config --global core.fsmonitor true
+
 # sign with SSH (do not enable by default)
 # git config --global gpg.format ssh
 # git config --global user.signinkey ~/.ssh/key.pub
