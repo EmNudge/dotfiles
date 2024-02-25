@@ -19,12 +19,9 @@ alias rm='rm -i'
 # better git graph
 alias gl="git log --all --graph --oneline"
 alias gc="git checkout"
+alias rebase-master="gc master && git pull && gc - && git rebase master"
+alias gb="git blame -w -C -C -C"
 
-# go to main branch, whether named master or main
-gcm() {
-	for branch in master main; do
-		if [ "`git branch --list $branch`" ]; then
-			git checkout $branch
-		fi
-	done
-}
+# better cat
+alias cat="bat"
+
