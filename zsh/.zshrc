@@ -37,7 +37,7 @@ source "$ZDOTDIR/vi-mode.zsh"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/paths.zsh"
 
-function zsh_add_plugin() {
+zsh_add_plugin() {
 	PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
 	if [ ! -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then
 		git clone "https://github.com/$1.git" "$ZDOTDIR/plugins/$PLUGIN_NAME" --depth 1
@@ -61,13 +61,13 @@ fi
 
 compinit
 
-function tmp() {
+tmp() {
 	local rand_name="r$(LC_ALL=C tr -dc a-z0-9 </dev/urandom | head -c 6)"
 	local temp_folder="/tmp/trash-dirs/${1:+$1-}$rand_name"
 	mkdir -p "$temp_folder" && cd "$temp_folder" || return 1
 }
 
-function graduate() {
+graduate() {
 	folder_name=${1:-$(basename "$PWD")}
 
 	new_path="$HOME/Workspace/$folder_name"
@@ -80,6 +80,6 @@ function graduate() {
 	cd $new_path
 }
 
-function q() {
+q() {
   llm "$*" | bat --paging=never -p -l md
 }
