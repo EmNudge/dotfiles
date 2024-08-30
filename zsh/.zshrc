@@ -83,3 +83,24 @@ graduate() {
 q() {
   llm "$*" | bat --paging=never -p -l md
 }
+
+# move between recent branches
+cb() {
+	git branch -vv --sort=-committerdate --color \
+	  | fzf --ansi --header Checkout \
+		| cut -d' ' -f3 \
+		| xargs git checkout
+}
+
+# get latest main branch
+gm() {
+	remote_head=$(git symbolic-ref refs/remote/origin/HEAD)
+	main_branch=$(basename $remote_head)
+
+	current_branch=$(git branch --show-current)
+	if [[ "$main_branch" != "$current_branch" ]]; then
+		git checkout $main_branch
+	fi
+
+	git pull
+}
