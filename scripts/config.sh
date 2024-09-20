@@ -2,7 +2,7 @@
 
 # branch view is column
 git config --global column.ui auto
-git config --global branch.sort -committterdate
+git config --global branch.sort -committerdate
 
 # enable merge conflict resolution memory
 git config --global rerere.enabled true
